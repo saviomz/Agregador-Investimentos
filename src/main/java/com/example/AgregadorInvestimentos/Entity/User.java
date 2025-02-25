@@ -14,7 +14,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID userId;
 
     @Column(name = "username")
     private String username;
@@ -44,19 +44,22 @@ public class User {
 
     }
 
-    public User(UUID ID, String username, String Email, String password){
+    public User(UUID userId, String username, String email, String password, Instant creationTimestamp, Instant updateTimestamp) {
+        this.userId = userId;
         this.username = username;
-        this.Email = Email;
+        this.Email = email;
         this.password = password;
+        this.creationTimestamp = creationTimestamp;
+        this.updateTimestamp = updateTimestamp;
     }
 
     //getter e setter
     public UUID getId(){
-        return id;
+        return userId;
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.userId = id;
     }
 
     public String getUsername(){
